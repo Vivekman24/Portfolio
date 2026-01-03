@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  
+  /* Theme customizer variables */
+  --theme-primary: #06b6d4;
+  --theme-secondary: #3b82f6;
+  --theme-accent: #22d3ee;
+  --theme-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 222 84% 4.9%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+  }
+  .dark {
+    /* Futuristic Black & Blue Theme */
+    --background: 220 25% 2%;           /* Deep space black */
+    --foreground: 195 100% 98%;         /* Bright white */
+    --card: 220 20% 4%;                 /* Slightly lighter black */
+    --card-foreground: 195 100% 98%;    /* Bright white */
+    --popover: 220 20% 4%;              /* Matching card background */
+    --popover-foreground: 195 100% 98%; /* Bright white */
+    --primary: 195 100% 60%;            /* Electric cyan */
+    --primary-foreground: 220 25% 2%;   /* Deep black */
+    --secondary: 220 30% 8%;            /* Dark blue-gray */
+    --secondary-foreground: 195 100% 95%; /* Light cyan */
+    --muted: 220 30% 8%;                /* Dark blue-gray */
+    --muted-foreground: 195 50% 70%;    /* Muted cyan */
+    --accent: 195 100% 50%;             /* Bright cyan accent */
+    --accent-foreground: 220 25% 2%;    /* Deep black */
+    --destructive: 0 70% 50%;           /* Red for errors */
+    --destructive-foreground: 195 100% 98%; /* Bright white */
+    --border: 220 30% 12%;              /* Dark blue border */
+    --input: 220 30% 8%;                /* Dark blue input */
+    --ring: 195 100% 60%;               /* Electric cyan ring */
+    --chart-1: 195 100% 60%;            /* Electric cyan */
+    --chart-2: 220 100% 50%;            /* Bright blue */
+    --chart-3: 180 100% 40%;            /* Teal */
+    --chart-4: 240 100% 60%;            /* Purple-blue */
+    --chart-5: 200 100% 50%;            /* Sky blue */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .dark body {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a2e 50%, #16213e 75%, #0f172a 100%) !important;
+  }
+  
+  /* Force override for any cached styles */
+  .dark {
+    --background: 220 25% 3% !important;
+    --foreground: 195 100% 95% !important;
+    --primary: 195 100% 60% !important;
+    --primary-foreground: 220 25% 3% !important;
+    --secondary: 220 30% 8% !important;
+    --secondary-foreground: 195 100% 90% !important;
+    --accent: 195 100% 50% !important;
+    --accent-foreground: 220 25% 3% !important;
+    --border: 220 30% 12% !important;
+    --ring: 195 100% 60% !important;
+  }
+  
+  /* Additional force overrides */
+  html.dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%) !important;
+  }
+  
+  html.dark body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%) !important;
+  }
+  
+  /* Force override ALL purple colors */
+  .dark * {
+    --tw-gradient-from: #06b6d4 !important;
+    --tw-gradient-to: #3b82f6 !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0)) !important;
+  }
+  
+  /* Override any purple gradients */
+  .dark .bg-gradient-to-r.from-blue-500.to-purple-600,
+  .dark .bg-gradient-to-r.from-blue-600.to-purple-600,
+  .dark .bg-gradient-to-r.from-blue-500.to-purple-500 {
+    background: linear-gradient(to right, #06b6d4, #3b82f6) !important;
+  }
+  
+  /* Override purple borders and rings */
+  .dark .border-purple-600,
+  .dark .border-purple-500,
+  .dark .ring-purple-600,
+  .dark .ring-purple-500 {
+    border-color: #06b6d4 !important;
+    --tw-ring-color: #06b6d4 !important;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-slate-900/80 backdrop-blur-md border border-cyan-500/30;
+  }
+  
+  .glass-blue {
+    @apply bg-slate-900/90 backdrop-blur-lg border border-cyan-400/20 shadow-lg shadow-cyan-500/10;
+  }
+  
+  .gradient-text {
+    @apply inline-block text-white;
+  }
+  
+  .font-mono-code {
+    font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-pulse-blue {
+    animation: pulse-blue 3s ease-in-out infinite;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.8);
+  }
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 211, 238, 0.6), 0 0 60px rgba(34, 211, 238, 0.3);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
+
+/* Theme-aware gradient text */
+.gradient-text-themed {
+  background: var(--theme-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scroll for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 3D transform support */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Magnetic button hover glow */
+.magnetic-glow:hover {
+  box-shadow: 0 0 20px var(--theme-primary), 0 0 40px rgba(var(--theme-primary), 0.3);
+}
+
+/* Card shine effect on hover */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.card-shine:hover::before {
+  left: 100%;
+}
