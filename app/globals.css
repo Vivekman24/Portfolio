@@ -16,6 +16,7 @@
   --theme-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -23,6 +24,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+*/
 
 @layer base {
   :root {
@@ -52,7 +54,13 @@
     --chart-5: 27 87% 67%;
     --radius: 0.75rem;
   }
+
   .dark {
+    
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
     /* Futuristic Black & Blue Theme */
     --background: 220 25% 2%;           /* Deep space black */
     --foreground: 195 100% 98%;         /* Bright white */
@@ -106,6 +114,11 @@
     --accent-foreground: 220 25% 3% !important;
     --border: 220 30% 12% !important;
     --ring: 195 100% 60% !important;
+
+    
+    --foreground-rgb: 255, 255, 255 !important;
+    --background-start-rgb: 0, 0, 0 !important;
+    --background-end-rgb: 0, 0, 0 !important;
   }
   
   /* Additional force overrides */
