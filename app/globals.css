@@ -242,6 +242,12 @@
 /* Smooth scroll for the whole page */
 html {
   scroll-behavior: smooth;
+  background-color: #0a0a0f !important;
+}
+
+/* Force dark background on body - prevents light flash */
+body {
+  background-color: #0a0a0f !important;
 }
 
 /* 3D transform support */
