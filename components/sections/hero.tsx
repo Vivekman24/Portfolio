@@ -61,15 +61,14 @@ const Hero = () => {
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
         />
-        {/* Subtle grid overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDYwIDAgTCAwIDAgMCA2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDYsIDE4MiwgMjEyLCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50" />
+        {/* grid overlay removed */}
       </div>
 
       {/* 3D Background - More subtle */}
       <Hero3DWrapper />
       
-      {/* Dark overlay for better text readability on mobile */}
-      <div className="absolute inset-0 bg-slate-900/60 md:bg-slate-900/20 z-[5] pointer-events-none" />
+      {/* Dark overlay for better text readability on mobile and desktop */}
+      <div className="absolute inset-0 bg-slate-900/60 md:bg-slate-900/70 z-[5] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto text-center relative z-10">
         <motion.div

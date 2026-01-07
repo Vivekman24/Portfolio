@@ -31,14 +31,15 @@ const GradientMeshBackground = () => {
 
     // Detect if mobile for adjusted opacity - much more subtle on mobile
     const isMobile = window.innerWidth < 768;
-    const opacityMultiplier = isMobile ? 0.08 : 0.4;
+    // Reduce desktop orb opacity so background hues remain subtle on large screens
+    const opacityMultiplier = isMobile ? 0.08 : 0.12;
 
     const colors = [
-      `rgba(6, 182, 212, ${opacityMultiplier})`,    // Cyan
-      `rgba(59, 130, 246, ${opacityMultiplier})`,   // Blue
-      `rgba(139, 92, 246, ${opacityMultiplier * 0.75})`,   // Purple
-      `rgba(34, 211, 238, ${opacityMultiplier * 0.75})`,   // Light cyan
-      `rgba(99, 102, 241, ${opacityMultiplier * 0.75})`,   // Indigo
+      `rgba(15, 23, 42, ${opacityMultiplier})`,    // Dark navy
+      `rgba(30, 41, 59, ${opacityMultiplier})`,   // Dark slate
+      `rgba(59, 130, 246, ${opacityMultiplier * 0.6})`,   // Muted blue
+      `rgba(34, 211, 238, ${opacityMultiplier * 0.5})`,   // Muted cyan
+      `rgba(99, 102, 241, ${opacityMultiplier * 0.5})`,   // Muted indigo
     ];
 
     const createOrbs = () => {
@@ -63,9 +64,9 @@ const GradientMeshBackground = () => {
 
       // Draw gradient background
       const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      bgGradient.addColorStop(0, 'rgba(15, 23, 42, 1)');
-      bgGradient.addColorStop(0.5, 'rgba(30, 41, 59, 1)');
-      bgGradient.addColorStop(1, 'rgba(15, 23, 42, 1)');
+      bgGradient.addColorStop(0, 'rgba(2, 6, 23, 1)');
+      bgGradient.addColorStop(0.5, 'rgba(15, 20, 40, 1)');
+      bgGradient.addColorStop(1, 'rgba(2, 6, 23, 1)');
       ctx.fillStyle = bgGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -148,7 +149,7 @@ const GradientMeshBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none opacity-80 md:opacity-80"
+      className="fixed inset-0 z-0 pointer-events-none opacity-60 md:opacity-30"
     />
   );
 };

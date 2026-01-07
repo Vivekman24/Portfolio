@@ -99,7 +99,7 @@
   }
   
   .dark body {
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a2e 50%, #16213e 75%, #0f172a 100%) !important;
+    background: linear-gradient(135deg, #020617 0%, #0f1419 50%, #0a0e14 100%) !important;
   }
   
   /* Force override for any cached styles */
@@ -122,35 +122,13 @@
   }
   
   /* Additional force overrides */
+  /* Ensure a deep, subtle dark gradient on desktop to preserve contrast */
   html.dark {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%) !important;
+    background: linear-gradient(135deg, #020617 0%, #0f1419 50%, #0a0e14 100%) !important;
   }
-  
+
   html.dark body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e293b 100%) !important;
-  }
-  
-  /* Force override ALL purple colors */
-  .dark * {
-    --tw-gradient-from: #06b6d4 !important;
-    --tw-gradient-to: #3b82f6 !important;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0)) !important;
-  }
-  
-  /* Override any purple gradients */
-  .dark .bg-gradient-to-r.from-blue-500.to-purple-600,
-  .dark .bg-gradient-to-r.from-blue-600.to-purple-600,
-  .dark .bg-gradient-to-r.from-blue-500.to-purple-500 {
-    background: linear-gradient(to right, #06b6d4, #3b82f6) !important;
-  }
-  
-  /* Override purple borders and rings */
-  .dark .border-purple-600,
-  .dark .border-purple-500,
-  .dark .ring-purple-600,
-  .dark .ring-purple-500 {
-    border-color: #06b6d4 !important;
-    --tw-ring-color: #06b6d4 !important;
+    background: linear-gradient(135deg, #020617 0%, #0f1419 50%, #0a0e14 100%) !important;
   }
 }
 

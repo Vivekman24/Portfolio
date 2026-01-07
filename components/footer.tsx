@@ -34,10 +34,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative py-16 px-4 border-t border-cyan-500/20 bg-slate-950 isolate">
-      {/* Solid dark background to block gradient mesh */}
-      <div className="absolute inset-0 bg-slate-950 -z-10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/95 to-slate-900 -z-10" />
+    <footer className="relative z-20 py-16 px-4 border-t border-cyan-500/20 bg-gradient-to-r from-blue-500 to-blue-600 isolate">
+      {/* Light blue gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-500 to-transparent opacity-10 -z-10" />
       
       <div className="relative max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -53,9 +53,9 @@ const Footer = () => {
               <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500">
                 <Code2 size={24} className="text-white" />
               </div>
-              <span className="text-2xl font-bold gradient-text">Vivek Sai Manthri</span>
+              <span className="text-2xl font-bold gradient-text text-white">Vivek Sai Manthri</span>
             </div>
-            <p className="text-white/80 md:text-gray-400 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               Full-Stack Developer & AI Enthusiast building innovative solutions 
               that blend cutting-edge technology with practical applications.
             </p>
@@ -69,7 +69,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="p-2 rounded-lg bg-white/5 text-white/80 md:text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+                      className="p-2 rounded-lg bg-white/5 text-white hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
                   >
                     <Icon size={20} />
                   </motion.a>
@@ -92,7 +92,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-white/80 md:text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2 group"
+                    className="text-white hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2 group"
                   >
                     <span className="w-0 group-hover:w-2 h-0.5 bg-cyan-400 transition-all duration-300" />
                     <span>{link.label}</span>
@@ -111,7 +111,7 @@ const Footer = () => {
             className="space-y-4"
           >
             <h3 className="text-lg font-semibold text-white">Get In Touch</h3>
-            <div className="space-y-3 text-sm text-white/80 md:text-gray-400">
+            <div className="space-y-3 text-sm text-white">
               <p>📍 South Brunswick, NJ</p>
               <p>📧 manthrivivek@gmail.com</p>
               <p>📱 +1 (248) 759-7187</p>
@@ -133,7 +133,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="pt-8 border-t border-white/10 flex items-center justify-center"
         >
-          <p className="text-white/70 md:text-gray-400 text-sm">
+          <p className="text-white text-sm">
             © {currentYear} Vivek Sai Manthri. All rights reserved.
           </p>
         </motion.div>

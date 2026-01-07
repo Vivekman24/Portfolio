@@ -161,7 +161,7 @@ const Leadership = () => {
                     className="space-y-2"
                   >
                     <p className="text-3xl md:text-4xl font-bold gradient-text">{stat.value}</p>
-                    <p className="text-sm text-white/70 md:text-gray-400">{stat.label}</p>
+                    <p className="text-sm text-white font-medium">{stat.label}</p>
                   </motion.div>
                 ))}
               </div>
