@@ -22,7 +22,7 @@ const Resume = () => {
       degree: 'M.S. in Computer Science',
       school: 'Rutgers University, New Brunswick, NJ',
       period: 'Fall 2025 – May 2027',
-      focus: 'Brain-Inspired Computing, Data Structures and Algorithms, Introduction to AI'
+      focus: 'Brain-Inspired Computing, Data Structures and Algorithms, Introduction to AI, Database Systems for Data Science, Natural Language Processing, Massive Data Mining, Artificial Intelligence for Visual Computing, Machine Learning I, Programming Finance'
     },
     {
       degree: 'B.S. in Computer Science and Data Science',
@@ -128,7 +128,7 @@ const Resume = () => {
           <h3 className="text-3xl md:text-4xl font-bold mb-8 text-center">
             <span className="gradient-text">Technical Skills</span>
           </h3>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
             {Object.entries(skills).map(([category, subcategories], index) => (
               <motion.div
                 key={index}
@@ -136,14 +136,14 @@ const Resume = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                className={`h-full ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'} ${index === 4 ? 'md:col-span-2' : ''}`}
               >
-                <TiltCard tiltStrength={8} glareEnable={true}>
-                  <Card className="glass dark:glass-dark border-white/10 h-full hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+                <TiltCard className="h-full" tiltStrength={8} glareEnable={true}>
+                  <Card className="glass dark:glass-dark border-white/10 h-full flex flex-col hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
                     <CardHeader>
                       <h4 className="text-lg font-semibold text-white">{category}</h4>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent className="space-y-4 flex-1">
                       {Object.entries(subcategories).map(([subCategory, skillList]) => (
                         <div key={subCategory}>
                           <p className="text-sm text-cyan-400 mb-2 font-medium">{subCategory}</p>

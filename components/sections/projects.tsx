@@ -78,7 +78,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
@@ -88,10 +88,10 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                className="group h-full"
               >
-                <TiltCard tiltStrength={8} glareEnable={true}>
-                  <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10">
+                <TiltCard className="h-full" tiltStrength={8} glareEnable={true}>
+                  <Card className="glass dark:glass-dark border-white/10 h-full flex flex-col transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10">
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between mb-4">
                         <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${project.color}`}>
@@ -115,7 +115,7 @@ const Projects = () => {
                       <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                       <p className="text-gray-400 text-sm leading-relaxed">{project.description}</p>
                     </CardHeader>
-                    <CardContent className="pt-0">
+                    <CardContent className="pt-0 flex-1 flex flex-col">
                       {/* Technologies */}
                       <div className="mb-4">
                         <h4 className="text-sm font-semibold text-white mb-2">Technologies</h4>
@@ -133,7 +133,7 @@ const Projects = () => {
                       </div>
 
                       {/* Features */}
-                      <div>
+                      <div className="mt-auto">
                         <h4 className="text-sm font-semibold text-white mb-2">Key Features</h4>
                         <ul className="space-y-1">
                           {project.features.map((feature, featureIndex) => (

@@ -15,7 +15,7 @@ const RESUME_DATA = {
       degree: "M.S. in Computer Science",
       school: "Rutgers University, New Brunswick, NJ",
       period: "Fall 2025 – May 2027",
-      focus: "Computer Structures, Topics in AI, Brain-Inspired Computing, Programming Languages And Compilers I"
+      focus: "Brain-Inspired Computing, Data Structures and Algorithms, Introduction to AI, Database Systems for Data Science, Natural Language Processing, Massive Data Mining, Artificial Intelligence for Visual Computing, Machine Learning I, Programming Finance"
     },
     {
       degree: "B.S. in Computer Science and Data Science",
@@ -25,6 +25,17 @@ const RESUME_DATA = {
     }
   ],
   experience: [
+    {
+      title: "Clinical Study Start-Up Automation Intern",
+      company: "Regeneron",
+      location: "Warren, NJ | Onsite",
+      period: "June 2026 – August 2026",
+      achievements: [
+        "Developed production-ready enterprise AI agents in Microsoft Copilot Studio using Power Automate Agent Flows and M365 integrations to automate Clinical Study/Site Start-Up (SSU) processes and eliminate repetitive manual work",
+        "Engineered SSU Data Steward FilePilot, an end-to-end automation solution that processes Jira ticket data, updates Excel workbooks using Python, JavaScript, and TypeScript scripts, and publishes files to SharePoint, saving 5+ hours daily",
+        "Built AI-powered site/clinical operations solutions reducing site intelligence report preparation time by 50% and developed PQ DraftPilot, a multi-agent workflow accelerating Performance Qualification Script generation by 75%"
+      ]
+    },
     {
       title: "Full-Stack Developer Intern",
       company: "Gogentic AI",
@@ -159,7 +170,10 @@ function findRelevantInfo(query: string): string {
   }
   
   // Check for company mentions
-  else if (lowerQuery.includes('gogentic') || lowerQuery.includes('gogentic ai')) {
+  else if (lowerQuery.includes('regeneron')) {
+    const exp = RESUME_DATA.experience.find(e => e.company.includes('Regeneron'));
+    relevantInfo = `Company: ${exp?.company}\nPosition: ${exp?.title}\nPeriod: ${exp?.period}\nKey Achievements: ${exp?.achievements.join('; ')}`;
+  } else if (lowerQuery.includes('gogentic') || lowerQuery.includes('gogentic ai')) {
     const exp = RESUME_DATA.experience.find(e => e.company.includes('Gogentic'));
     relevantInfo = `Company: ${exp?.company}\nPosition: ${exp?.title}\nPeriod: ${exp?.period}\nKey Achievements: ${exp?.achievements.join('; ')}`;
   } else if (lowerQuery.includes('aroopa') || lowerQuery.includes('aroopa inc')) {
@@ -212,7 +226,7 @@ function generateIntelligentResponse(message: string): string {
 
   // Handle "who is vivek" / "tell me about vivek"
   if (lowerMessage.includes('who is vivek') || lowerMessage.includes('tell me about vivek') || lowerMessage.includes('about vivek') || lowerMessage.includes('who\'s vivek')) {
-    return "Vivek Sai Manthri is a passionate software developer and AI enthusiast currently pursuing his M.S. in Computer Science at Rutgers University. He has a strong background in full-stack development and AI/ML, with internship experience at Gogentic AI, Aroopa Inc., and Memorial Sloan Kettering Cancer Center. He's skilled in Python, Java, React, and various AI technologies, and loves building innovative solutions that make a real-world impact!";
+    return "Vivek Sai Manthri is a passionate software developer and AI enthusiast currently pursuing his M.S. in Computer Science at Rutgers University. He has a strong background in full-stack development and AI/ML, with internship experience at Regeneron, Gogentic AI, Aroopa Inc., and Memorial Sloan Kettering Cancer Center. He's skilled in Python, Java, React, and various AI technologies, and loves building innovative solutions that make a real-world impact!";
   }
 
   // ============ HOBBIES & FUN ============
@@ -243,7 +257,7 @@ function generateIntelligentResponse(message: string): string {
   // ============ AI/ML EXPERIENCE ============
   if (lowerMessage.includes('ai') || lowerMessage.includes('artificial intelligence') || lowerMessage.includes('machine learning') || lowerMessage.includes('ml') || lowerMessage.includes('deep learning') || lowerMessage.includes('neural network')) {
     if (lowerMessage.includes('experience') || lowerMessage.includes('work') || lowerMessage.includes('project') || lowerMessage.includes('know') || lowerMessage.includes('skill')) {
-      return "Vivek has extensive AI/ML experience! 🤖 At Memorial Sloan Kettering, he designed a Conditional GAN model for synthetic clinical data generation. At Gogentic AI, he implemented RAG pipelines using ChromaDB, OpenAI embeddings, and LangChain for semantic search. He's proficient in TensorFlow, Keras, Scikit-Learn, PyTorch, Hugging Face, and has worked with OpenAI APIs. His M.S. concentration is in AI/ML, and he's passionate about building intelligent applications!";
+      return "Vivek has extensive AI/ML experience! 🤖 At Regeneron, he built production-ready enterprise AI agents in Microsoft Copilot Studio and multi-agent workflows like PQ DraftPilot. At Memorial Sloan Kettering, he designed a Conditional GAN model for synthetic clinical data generation. At Gogentic AI, he implemented RAG pipelines using ChromaDB, OpenAI embeddings, and LangChain for semantic search. He's proficient in TensorFlow, Keras, Scikit-Learn, PyTorch, Hugging Face, and has worked with OpenAI APIs. His M.S. concentration is in AI/ML, and he's passionate about building intelligent applications!";
     }
     return "Vivek is deeply passionate about AI and machine learning! He's currently pursuing his M.S. in Computer Science with a concentration in AI/ML at Rutgers. He's worked on projects involving GANs, RAG pipelines, semantic search, and has experience with TensorFlow, Keras, Scikit-Learn, OpenAI, LangChain, and more. Ask me about specific AI projects or his ML experience!";
   }
@@ -272,6 +286,10 @@ function generateIntelligentResponse(message: string): string {
   }
 
   // ============ COMPANY-SPECIFIC QUESTIONS ============
+  if (lowerMessage.includes('regeneron')) {
+    return "At Regeneron (June-August 2026), Vivek worked onsite in Warren, NJ as a Clinical Study Start-Up Automation Intern! He developed production-ready enterprise AI agents in Microsoft Copilot Studio with Power Automate Agent Flows and M365 integrations to automate Clinical Study/Site Start-Up processes. He engineered SSU Data Steward FilePilot to process Jira tickets, update Excel workbooks with Python, JavaScript, and TypeScript, and publish files to SharePoint, saving 5+ hours daily. He also built AI-powered clinical operations solutions that cut site intelligence report prep time by 50% and created PQ DraftPilot, a multi-agent workflow that accelerated Performance Qualification Script generation by 75%!";
+  }
+
   if (lowerMessage.includes('gogentic')) {
     return "At Gogentic AI (July-August 2025), Vivek worked as a Full-Stack Developer Intern! 🚀 He developed NeuroVault, an AI memory system that transforms audio into structured intelligence. He built the React/TypeScript frontend, FastAPI/Python backend, and implemented RAG pipelines using ChromaDB, OpenAI embeddings, and LangChain. He achieved 33% faster load times, 37% better query accuracy, and 40% cloud cost reduction!";
   }
@@ -292,18 +310,21 @@ function generateIntelligentResponse(message: string): string {
     if (lowerMessage.includes('second')) {
       return "Vivek's second internship was at Aroopa, Inc. (June-August 2025) as a Software Developer Intern! He built MERN stack applications, designed responsive UI components with React and Tailwind CSS, and developed MongoDB schemas with RESTful APIs. He boosted user engagement by 15% and improved API reliability by 20%!";
     }
-    if (lowerMessage.includes('third') || lowerMessage.includes('latest') || lowerMessage.includes('recent') || lowerMessage.includes('last')) {
-      return "Vivek's most recent internship was at Gogentic AI (July-August 2025) as a Full-Stack Developer Intern! He developed NeuroVault, an AI memory system using React, TypeScript, FastAPI, Python, and RAG pipelines. He achieved 33% faster load times, 37% better query accuracy, and 40% cloud cost reduction. It was an amazing experience working on cutting-edge AI technology!";
+    if (lowerMessage.includes('third')) {
+      return "Vivek's third internship was at Gogentic AI (July-August 2025) as a Full-Stack Developer Intern! He developed NeuroVault, an AI memory system using React, TypeScript, FastAPI, Python, and RAG pipelines. He achieved 33% faster load times, 37% better query accuracy, and 40% cloud cost reduction. It was an amazing experience working on cutting-edge AI technology!";
+    }
+    if (lowerMessage.includes('fourth') || lowerMessage.includes('latest') || lowerMessage.includes('recent') || lowerMessage.includes('last')) {
+      return "Vivek's most recent internship was at Regeneron (June-August 2026) as a Clinical Study Start-Up Automation Intern in Warren, NJ! He built enterprise AI agents in Microsoft Copilot Studio, engineered SSU Data Steward FilePilot (saving 5+ hours daily), and developed PQ DraftPilot, which accelerated Performance Qualification Script generation by 75%.";
     }
     if (lowerMessage.includes('how many') || lowerMessage.includes('number')) {
-      return "Vivek has completed 3 internships: 1️⃣ Memorial Sloan Kettering Cancer Center (2024) - Software Engineering Intern, 2️⃣ Aroopa, Inc. (2025) - Software Developer Intern, and 3️⃣ Gogentic AI (2025) - Full-Stack Developer Intern. Each gave him valuable experience in different areas of software development!";
+      return "Vivek has completed 4 internships: 1️⃣ Memorial Sloan Kettering Cancer Center (2024) - Software Engineering Intern, 2️⃣ Aroopa, Inc. (2025) - Software Developer Intern, 3️⃣ Gogentic AI (2025) - Full-Stack Developer Intern, and 4️⃣ Regeneron (2026) - Clinical Study Start-Up Automation Intern. Each gave him valuable experience in different areas of software development!";
     }
-    return "Vivek has completed 3 internships: Gogentic AI (Full-Stack Developer), Aroopa, Inc. (Software Developer), and Memorial Sloan Kettering Cancer Center (Software Engineering). His favorite was MSK because he made real-world impact helping analyze patient data. Ask me about any specific internship for more details!";
+    return "Vivek has completed 4 internships: Regeneron (Clinical Study Start-Up Automation), Gogentic AI (Full-Stack Developer), Aroopa, Inc. (Software Developer), and Memorial Sloan Kettering Cancer Center (Software Engineering). His favorite was MSK because he made real-world impact helping analyze patient data. Ask me about any specific internship for more details!";
   }
 
   // ============ EXPERIENCE/WORK QUESTIONS ============
   if (lowerMessage.includes('experience') || lowerMessage.includes('work history') || lowerMessage.includes('background')) {
-    return "Vivek has diverse professional experience! He's worked at: 1️⃣ Gogentic AI - developing AI memory systems with React and FastAPI, 2️⃣ Aroopa, Inc. - building MERN stack applications, and 3️⃣ Memorial Sloan Kettering Cancer Center - creating ML models for healthcare. Combined with his M.S. in Computer Science at Rutgers, he has a strong foundation in full-stack development, AI/ML, and cloud technologies!";
+    return "Vivek has diverse professional experience! He's worked at: 1️⃣ Regeneron - automating clinical study start-up with Copilot Studio AI agents, 2️⃣ Gogentic AI - developing AI memory systems with React and FastAPI, 3️⃣ Aroopa, Inc. - building MERN stack applications, and 4️⃣ Memorial Sloan Kettering Cancer Center - creating ML models for healthcare. Combined with his M.S. in Computer Science at Rutgers, he has a strong foundation in full-stack development, AI/ML, and cloud technologies!";
   }
 
   // ============ PROJECTS GENERAL ============
@@ -329,7 +350,7 @@ function generateIntelligentResponse(message: string): string {
 
   // ============ EDUCATION ============
   if (lowerMessage.includes('education') || lowerMessage.includes('degree') || lowerMessage.includes('university') || lowerMessage.includes('college') || lowerMessage.includes('school') || lowerMessage.includes('study') || lowerMessage.includes('studying') || lowerMessage.includes('rutgers')) {
-    return "Vivek is currently pursuing his M.S. in Computer Science at Rutgers University (2025-2027) with focus on AI/ML, Brain-Inspired Computing, and Programming Languages! 🎓 He completed his B.S. in Computer Science and Data Science at Rutgers (2022-2025), where he studied Algorithms, Data Structures, Machine Learning, Databases, and more. Go Scarlet Knights!";
+    return "Vivek is currently pursuing his M.S. in Computer Science at Rutgers University (2025-2027)! 🎓 His graduate coursework includes Brain-Inspired Computing, Data Structures and Algorithms, Introduction to AI, Database Systems for Data Science, Natural Language Processing, Massive Data Mining, Artificial Intelligence for Visual Computing, Machine Learning I, and Programming Finance. He completed his B.S. in Computer Science and Data Science at Rutgers (2022-2025), where he studied Algorithms, Data Structures, Machine Learning, Databases, and more. Go Scarlet Knights!";
   }
 
   // ============ CONTACT INFORMATION ============
@@ -424,11 +445,11 @@ function generateIntelligentResponse(message: string): string {
   // ============ DEFAULT INTELLIGENT RESPONSES ============
   // Try to give a helpful response based on keywords
   if (lowerMessage.includes('vivek')) {
-    return "Vivek Sai Manthri is a passionate software developer and AI enthusiast! He's pursuing his M.S. in Computer Science at Rutgers, has completed 3 internships (Gogentic AI, Aroopa, and Memorial Sloan Kettering), and has built impressive projects like NeuroVault. What specific aspect would you like to know more about - his skills, experience, projects, or something else?";
+    return "Vivek Sai Manthri is a passionate software developer and AI enthusiast! He's pursuing his M.S. in Computer Science at Rutgers, has completed 4 internships (Regeneron, Gogentic AI, Aroopa, and Memorial Sloan Kettering), and has built impressive projects like NeuroVault. What specific aspect would you like to know more about - his skills, experience, projects, or something else?";
   }
 
   // Default response with suggestions
-  return "I'm Vivek's AI assistant! 🤖 I can tell you about his experience (3 internships at Gogentic AI, Aroopa, and MSK), his projects (NeuroVault, Online Auction System, Cafe Bliss App), his skills (Python, Java, React, AI/ML), his education (M.S. at Rutgers), or even his hobbies! What would you like to know?";
+  return "I'm Vivek's AI assistant! 🤖 I can tell you about his experience (4 internships at Regeneron, Gogentic AI, Aroopa, and MSK), his projects (NeuroVault, Online Auction System, Cafe Bliss App), his skills (Python, Java, React, AI/ML), his education (M.S. at Rutgers), or even his hobbies! What would you like to know?";
 }
 
 export async function POST(request: NextRequest) {
@@ -448,7 +469,7 @@ export async function POST(request: NextRequest) {
         // Create context for the AI
         const context = relevantInfo ? 
           `Based on this specific information about Vivek: ${relevantInfo}\n\n` :
-          `Based on Vivek's overall background: He's a Computer Science graduate student at Rutgers University with 3+ years of experience in full-stack development, AI/ML, and cloud technologies. He has worked at Gogentic AI, Aroopa, Inc., and Memorial Sloan Kettering Cancer Center.\n\n`;
+          `Based on Vivek's overall background: He's a Computer Science graduate student at Rutgers University with 3+ years of experience in full-stack development, AI/ML, and cloud technologies. He has worked at Regeneron, Gogentic AI, Aroopa, Inc., and Memorial Sloan Kettering Cancer Center.\n\n`;
 
         const systemPrompt = `You are Vivek Sai Manthri's AI assistant. You are knowledgeable, helpful, and enthusiastic about his work. 
 
@@ -502,7 +523,7 @@ Keep responses concise but informative (2-3 sentences typically). Be enthusiasti
         // Create context for the AI
         const context = relevantInfo ? 
           `Based on this specific information about Vivek: ${relevantInfo}\n\n` :
-          `Based on Vivek's overall background: He's a Computer Science graduate student at Rutgers University with 3+ years of experience in full-stack development, AI/ML, and cloud technologies. He has worked at Gogentic AI, Aroopa, Inc., and Memorial Sloan Kettering Cancer Center.\n\n`;
+          `Based on Vivek's overall background: He's a Computer Science graduate student at Rutgers University with 3+ years of experience in full-stack development, AI/ML, and cloud technologies. He has worked at Regeneron, Gogentic AI, Aroopa, Inc., and Memorial Sloan Kettering Cancer Center.\n\n`;
 
         const systemPrompt = `You are Vivek Sai Manthri's AI assistant. You are knowledgeable, helpful, and enthusiastic about his work. 
 

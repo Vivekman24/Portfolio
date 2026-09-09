@@ -9,6 +9,17 @@ import TiltCard from '@/components/tilt-card';
 const Experience = () => {
   const experiences = [
     {
+      title: 'Clinical Study Start-Up Automation Intern',
+      company: 'Regeneron',
+      location: 'Warren, NJ | Onsite',
+      period: 'June 2026 – August 2026',
+      description: [
+        'Developed production-ready enterprise AI agents in Microsoft Copilot Studio using Power Automate Agent Flows and M365 integrations to automate Clinical Study/Site Start-Up (SSU) processes and eliminate repetitive manual work',
+        'Engineered SSU Data Steward FilePilot, an end-to-end automation solution that processes Jira ticket data, updates Excel workbooks using Python, JavaScript, and TypeScript scripts, and publishes files to SharePoint, saving 5+ hours daily',
+        'Built AI-powered site/clinical operations solutions reducing site intelligence report preparation time by 50% and developed PQ DraftPilot, a multi-agent workflow accelerating Performance Qualification Script generation by 75%'
+      ]
+    },
+    {
       title: 'Full-Stack Developer Intern',
       company: 'Gogentic AI',
       location: 'Houston, TX | Remote',

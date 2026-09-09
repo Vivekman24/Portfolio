@@ -52,7 +52,7 @@ const TiltCard = ({
   return (
     <motion.div
       ref={cardRef}
-      className={`relative ${className}`}
+      className={`relative h-full [&>*]:h-full ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       animate={{
