@@ -34,10 +34,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative z-20 py-16 px-4 border-t border-cyan-500/20 bg-gradient-to-r from-blue-500 to-blue-600 isolate">
+    <footer className="relative z-20 py-10 px-4 border-t border-blue-500/20 studio-footer isolate">
       {/* Light blue gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 -z-10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-500 to-transparent opacity-10 -z-10" />
       
       <div className="relative max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -50,7 +48,7 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-500">
                 <Code2 size={24} className="text-white" />
               </div>
               <span className="text-2xl font-bold gradient-text text-white">Vivek Sai Manthri</span>
@@ -69,7 +67,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
-                      className="p-2 rounded-lg bg-white/5 text-white hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+                      className="p-2 rounded-lg bg-white/5 text-white hover:text-blue-400 hover:bg-blue-500/10 transition-all duration-300"
                   >
                     <Icon size={20} />
                   </motion.a>
@@ -92,9 +90,9 @@ const Footer = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-white hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2 group"
+                    className="text-white hover:text-blue-400 transition-colors text-sm flex items-center space-x-2 group"
                   >
-                    <span className="w-0 group-hover:w-2 h-0.5 bg-cyan-400 transition-all duration-300" />
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-blue-400 transition-all duration-300" />
                     <span>{link.label}</span>
                   </button>
                 </li>
@@ -117,8 +115,8 @@ const Footer = () => {
               <p>📱 +1 (248) 759-7187</p>
             </div>
             <div className="pt-2">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
-                <span className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse" />
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                <span className="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse" />
                 Open to Opportunities
               </span>
             </div>

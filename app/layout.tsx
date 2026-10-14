@@ -4,7 +4,6 @@ import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import AIChat from '@/components/ai-chat';
-import GradientMeshBackground from '@/components/gradient-mesh-background';
 import Footer from '@/components/footer';
 import PageTransition from '@/components/page-transition';
 import ScrollProgress from '@/components/scroll-progress';
@@ -40,13 +39,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       style={{
-        background: 'linear-gradient(135deg, #020617 0%, #0f1419 50%, #0a0e14 100%)',
-        color: '#e6faff',
+        background: '#050912',
+        color: '#f0f4ff',
       }}
     >
       <body
-        className={`${spaceGrotesk.className} antialiased bg-slate-950`}
-        style={{ backgroundColor: '#020617', color: '#e6faff' }}
+        className={`${spaceGrotesk.className} antialiased bg-[#050912]`}
+        style={{ backgroundColor: '#050912', color: '#f0f4ff' }}
       >
         <ThemeProvider
           attribute="class"
@@ -57,8 +56,8 @@ export default function RootLayout({
         >
           <ScrollProgress />
             <PageTransition>
-            <div className="relative min-h-screen bg-slate-950" style={{ backgroundColor: '#020617' }}>
-              <GradientMeshBackground />
+            <div className="relative min-h-screen bg-[#050912]" style={{ backgroundColor: '#050912' }}>
+
               {/* Dark overlay to improve contrast on deployed builds */}
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(2,6,23,0.1), rgba(2,6,23,0.15))', zIndex: 0 }} />
               {/* removed page-wide SVG grid overlay to prevent gridding effect */}

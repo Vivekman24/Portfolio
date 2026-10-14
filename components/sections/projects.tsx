@@ -1,187 +1,21 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Github, Code, Database, Brain, Smartphone } from 'lucide-react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import TiltCard from '@/components/tilt-card';
-import MagneticButton from '@/components/magnetic-button';
+import { ArrowUpRight, Database, Github, Smartphone } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
-const Projects = () => {
-  const projects = [
-    {
-      title: 'Online Auction System',
-      description: 'A secure web-based, full-stack auction platform featuring user authentication, real-time bidding, and automated alert notifications. Deployed on AWS cloud infrastructure with advanced search and filtering functionalities.',
-      technologies: ['JavaScript', 'Java', 'MySQL', 'JSP', 'JDBC', 'HTML/CSS', 'AWS (EC2, RDS)', 'Apache Tomcat'],
-      features: [
-        'User authentication and real-time bidding system',
-        'Advanced search and filtering functionalities',
-        'Administrative tools for detailed sales reports',
-        'AWS cloud deployment with 40% reduced latency',
-        'Enhanced user experience by 25%'
-      ],
-      icon: Database,
-      color: 'from-blue-500 to-cyan-500',
-      github: 'https://github.com/Vivekman24/OnlineAuction',
-      showGithub: true
-    },
-    {
-      title: 'Cafe Bliss App',
-      description: 'An Android application following the MVC design pattern for seamless menu browsing and order management. Features dynamic cart updates, custom quantities, and multi-screen navigation.',
-      technologies: ['Java', 'JavaFX', 'Android Studio'],
-      features: [
-        'MVC design pattern implementation',
-        'Dynamic cart updates and custom quantities',
-        'Multi-screen navigation',
-        'Modern UI components with RecyclerView',
-        'Singleton Pattern for efficient data handling'
-      ],
-      icon: Smartphone,
-      color: 'from-green-500 to-emerald-500',
-      github: 'https://github.com/Vivekman24/CafeBlissApp',
-      showGithub: true
-    },
-    {
-      title: 'NeuroVault AI Memory System',
-      description: 'An AI memory system that turns audio and thoughts into structured intelligence. Built with React frontend and FastAPI backend, featuring RAG pipelines and semantic search capabilities.',
-      technologies: ['React', 'TypeScript', 'FastAPI', 'Python', 'ChromaDB', 'OpenAI', 'LangChain', 'Neo4j'],
-      features: [
-        'Audio and PDF processing capabilities',
-        'RAG pipelines with semantic search',
-        '33% reduced load times with Vite optimization',
-        '40% cloud cost reduction with local-first storage',
-        '37% improved query accuracy'
-      ],
-      icon: Brain,
-      color: 'from-purple-500 to-pink-500',
-      showGithub: false
-    }
-  ];
+const projects = [
+  { title: 'Online Auction System', subtitle: 'Full-stack bidding platform', category: 'FULL-STACK / CLOUD', description: 'A secure auction platform with real-time bidding, automated alerts, and advanced search.', technologies: ['JavaScript', 'Java', 'MySQL', 'JSP', 'JDBC', 'HTML/CSS', 'AWS (EC2, RDS)', 'Apache Tomcat'], problem: 'Support secure bidding, searchable listings, and effective auction administration.', approach: 'Implemented authentication, real-time bidding, automated notifications, search and filters, and administrative sales reports. Deployed on AWS.', results: ['40% reduced latency with AWS cloud deployment', '25% enhanced user experience'], icon: Database, github: 'https://github.com/Vivekman24/OnlineAuction' },
+  { title: 'Cafe Bliss App', subtitle: 'Android ordering experience', category: 'MOBILE / PRODUCT ENGINEERING', description: 'A thoughtfully structured app for menu browsing, custom orders, and seamless cart management.', technologies: ['Java', 'JavaFX', 'Android Studio'], problem: 'Make menu browsing and order management seamless across multiple screens.', approach: 'Used MVC architecture, dynamic cart updates, custom quantities, RecyclerView components, and the Singleton pattern for data handling.', results: ['Multi-screen navigation', 'Dynamic cart updates and custom quantities', 'Structured MVC architecture'], icon: Smartphone, github: 'https://github.com/Vivekman24/CafeBlissApp' },
+];
 
-  return (
-    <section id="projects" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            A showcase of my recent work, demonstrating my skills in full-stack development, 
-            AI integration, and modern web technologies.
-          </p>
-        </motion.div>
+function ProjectDetails({ project }: { project: typeof projects[number] }) {
+  return <Dialog><DialogTrigger asChild><button className="studio-project-link" type="button">Explore project <ArrowUpRight size={17} /></button></DialogTrigger><DialogContent className="studio-dialog max-h-[85vh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto"><p className="studio-eyebrow">{project.category}</p><DialogTitle className="text-3xl text-stone-100">{project.title}</DialogTitle><DialogDescription className="text-slate-400">{project.description}</DialogDescription>{[['The problem', project.problem], ['The approach', project.approach]].map(([label, content]) => <div key={label} className="mt-3"><h3 className="mb-2 text-lg text-stone-100">{label}</h3><p className="text-sm leading-relaxed text-slate-400">{content}</p></div>)}<div className="mt-3"><h3 className="mb-3 text-lg text-stone-100">The result</h3><ul className="space-y-2 text-sm text-slate-300">{project.results.map(result => <li key={result}>→ {result}</li>)}</ul></div><div className="studio-tags mt-4">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" className="studio-project-link mt-4"><Github size={16} /> View source <ArrowUpRight size={16} /></a>}</DialogContent></Dialog>;
+}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
-          {projects.map((project, index) => {
-            const Icon = project.icon;
-            return (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group h-full"
-              >
-                <TiltCard className="h-full" tiltStrength={8} glareEnable={true}>
-                  <Card className="glass dark:glass-dark border-white/10 h-full flex flex-col transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10">
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${project.color}`}>
-                          <Icon size={24} className="text-white" />
-                        </div>
-                        {project.showGithub && (
-                          <div className="flex space-x-2">
-                            <MagneticButton strength={0.3}>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className="text-gray-400 hover:text-white hover:bg-white/10"
-                                onClick={() => window.open(project.github, '_blank')}
-                              >
-                                <Github size={16} />
-                              </Button>
-                            </MagneticButton>
-                          </div>
-                        )}
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{project.description}</p>
-                    </CardHeader>
-                    <CardContent className="pt-0 flex-1 flex flex-col">
-                      {/* Technologies */}
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-white mb-2">Technologies</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.map((tech) => (
-                            <Badge
-                              key={tech}
-                              variant="secondary"
-                              className="bg-white/10 text-gray-300 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
+function Preview({ kind }: { kind: number }) {
+  return <div className={`studio-preview studio-preview-${kind}`}><div className="flex items-center justify-between text-[10px] tracking-widest text-slate-500"><span>CONCEPT ILLUSTRATION</span><span>0{kind}</span></div>{kind === 1 ? <div className="mt-7 grid grid-cols-[1fr_1.2fr] items-center gap-5"><div className="studio-auction-object"><Database size={48} strokeWidth={1} /></div><div><span className="studio-eyebrow">BID. TRACK. WIN.</span><div className="mt-4 space-y-3">{['Browse listings', 'Place a bid', 'Receive alerts'].map((text, i) => <div key={text} className="studio-preview-row"><span className="text-blue-300">0{i + 1}</span>{text}</div>)}</div></div></div> : <div className="mt-5 flex justify-center"><div className="studio-phone"><div className="mx-auto mb-4 h-1 w-8 rounded bg-white/20" /><p className="text-lg text-stone-100">Cafe Bliss<span className="ml-2 text-blue-300">✳</span></p><p className="mt-1 text-[10px] text-slate-400">A little joy in every order.</p>{['Browse the menu', 'Make it yours', 'Ready to order'].map((text, i) => <div key={text} className="studio-preview-row mt-3"><span className="text-blue-300">0{i + 1}</span>{text}</div>)}</div></div>}</div>;
+}
 
-                      {/* Features */}
-                      <div className="mt-auto">
-                        <h4 className="text-sm font-semibold text-white mb-2">Key Features</h4>
-                        <ul className="space-y-1">
-                          {project.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="text-gray-400 text-xs flex items-start">
-                              <span className="text-cyan-400 mr-2">•</span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </TiltCard>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <Card className="glass dark:glass-dark border-white/10 max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <Code size={48} className="text-blue-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">Interested in Collaborating?</h3>
-              <p className="text-gray-300 mb-6">
-                I&apos;m always open to discussing new opportunities and exciting projects. 
-                Let&apos;s create something amazing together!
-              </p>
-              <MagneticButton strength={0.2}>
-                <Button
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white"
-                >
-                  Get In Touch
-                </Button>
-              </MagneticButton>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-export default Projects;
+export default function Projects() {
+  return <section id="projects" className="studio-projects px-6 py-12 md:py-14"><div className="studio-container"><div className="text-center mb-12"><p className="studio-eyebrow mb-4">03 / PERSONAL PROJECTS</p><h2 className="studio-heading mb-6">Projects</h2></div><div className="mb-8 flex flex-wrap items-end justify-between gap-6"><div><h3 className="text-2xl md:text-3xl tracking-tight text-stone-100">Ideas made <span className="studio-accent">real.</span></h3></div><p className="max-w-sm text-sm leading-relaxed text-slate-400">Full-stack platforms and mobile experiences. A closer look at what I build and how I approach it.</p></div><div className="mt-6 grid gap-6 md:grid-cols-2">{projects.map((project, index) => <article key={project.title} className="studio-project flex flex-col"><Preview kind={index + 1} /><div className="studio-project-body flex flex-1 flex-col"><p className="studio-eyebrow">{project.category}</p><h3 className="mt-4 text-2xl text-stone-100">{project.title}</h3><p className="mb-5 mt-3 text-sm leading-relaxed text-slate-400">{project.description}</p><div className="studio-tags mb-6">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div><div className="mt-auto flex flex-wrap items-center justify-between gap-4"><ProjectDetails project={project} />{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" className="studio-social text-sm text-slate-400"><Github size={16} /> Source <ArrowUpRight size={14} /></a>}</div></div></article>)}</div></div></section>;
+}

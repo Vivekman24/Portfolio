@@ -126,7 +126,7 @@ const AIChat = () => {
           >
             <Button
               onClick={() => setIsOpen(true)}
-              className="w-14 h-14 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow"
+              className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 "
             >
               <MessageCircle size={24} />
             </Button>
@@ -145,11 +145,11 @@ const AIChat = () => {
             className="fixed bottom-6 right-6 z-40 w-96 max-w-[calc(100vw-3rem)]"
             style={{ maxHeight: 'calc(100vh - 100px)' }}
           >
-            <Card className="bg-slate-900/95 backdrop-blur-lg border border-cyan-500/30 shadow-2xl flex flex-col overflow-hidden" style={{ maxHeight: 'calc(100vh - 100px)' }}>
+            <Card className="bg-[#0c1424]/95 backdrop-blur-lg border border-blue-500/30 shadow-2xl flex flex-col overflow-hidden" style={{ maxHeight: 'calc(100vh - 100px)' }}>
               <CardHeader className="pb-3 flex-shrink-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500">
+                    <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-500">
                       <Bot size={20} className="text-white" />
                     </div>
                     <div>
@@ -183,13 +183,13 @@ const AIChat = () => {
                         <div
                           className={`max-w-[80%] p-3 rounded-lg ${
                             message.sender === 'user'
-                              ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
-                              : 'bg-cyan-500/10 text-cyan-200 border border-cyan-500/20'
+                              ? 'bg-gradient-to-r from-blue-600 to-blue-600 text-white'
+                              : 'bg-blue-500/10 text-blue-200 border border-blue-500/20'
                           }`}
                         >
                           <div className="flex items-start space-x-2">
                             {message.sender === 'ai' && (
-                              <Bot size={16} className="text-cyan-400 mt-0.5 flex-shrink-0" />
+                              <Bot size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
                             )}
                             {message.sender === 'user' && (
                               <User size={16} className="text-white mt-0.5 flex-shrink-0" />
@@ -206,11 +206,11 @@ const AIChat = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="flex justify-start"
                       >
-                        <div className="bg-cyan-500/10 border border-cyan-500/20 p-3 rounded-lg">
+                        <div className="bg-blue-500/10 border border-blue-500/20 p-3 rounded-lg">
                           <div className="flex items-center space-x-2">
-                            <Bot size={16} className="text-cyan-400" />
-                            <Loader2 size={16} className="text-cyan-400 animate-spin" />
-                            <span className="text-sm text-cyan-300">Thinking...</span>
+                            <Bot size={16} className="text-blue-400" />
+                            <Loader2 size={16} className="text-blue-400 animate-spin" />
+                            <span className="text-sm text-blue-300">Thinking...</span>
                           </div>
                         </div>
                       </motion.div>
@@ -227,13 +227,13 @@ const AIChat = () => {
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Ask about Vivek..."
-                      className="bg-cyan-500/5 border-cyan-500/20 text-white placeholder:text-cyan-400 focus:border-cyan-400"
+                      className="bg-blue-500/5 border-blue-500/20 text-white placeholder:text-blue-400 focus:border-blue-400"
                       disabled={isLoading}
                     />
                     <Button
                       onClick={() => sendMessage(inputValue)}
                       disabled={isLoading || !inputValue.trim()}
-                      className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
+                      className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700"
                     >
                       <Send size={16} />
                     </Button>

@@ -109,8 +109,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="studio-section relative px-6 py-16 md:py-20">
+      <div className="studio-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,16 +118,17 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">07 / START A CONVERSATION</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">Get In Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Ready to bring your ideas to life? Let&apos;s discuss your next project or collaboration. 
             I&apos;m always excited to work on innovative solutions!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -135,8 +136,8 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <TiltCard tiltStrength={5} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
+            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
               <CardHeader>
                 <h3 className="text-2xl font-bold text-white">Send Message</h3>
                 <p className="text-gray-400">
@@ -196,7 +197,7 @@ const Contact = () => {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white py-3"
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white py-3"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center space-x-2">
@@ -226,8 +227,8 @@ const Contact = () => {
             className="space-y-8"
           >
             {/* Contact Details */}
-            <TiltCard tiltStrength={6} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
+            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
               <CardHeader>
                 <h3 className="text-2xl font-bold text-white">Contact Information</h3>
                 <p className="text-gray-400">
@@ -246,7 +247,7 @@ const Contact = () => {
                       viewport={{ once: true }}
                       className="flex items-center space-x-4"
                     >
-                      <div className="p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500">
+                      <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-500">
                         <Icon size={20} className="text-white" />
                       </div>
                       <div>
@@ -256,7 +257,7 @@ const Contact = () => {
                         ) : (
                           <a
                             href={info.href}
-                            className="text-white font-medium hover:text-cyan-400 transition-colors"
+                            className="text-white font-medium hover:text-blue-400 transition-colors"
                           >
                             {info.value}
                           </a>
@@ -270,8 +271,8 @@ const Contact = () => {
             </TiltCard>
 
             {/* Social Links */}
-            <TiltCard tiltStrength={8} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
+            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
               <CardHeader>
                 <h3 className="text-xl font-bold text-white">Connect With Me</h3>
                 <p className="text-gray-400">
@@ -293,7 +294,8 @@ const Contact = () => {
                           transition={{ duration: 0.5, delay: index * 0.1 }}
                           viewport={{ once: true }}
                           whileHover={{ scale: 1.1 }}
-                          className={`p-3 rounded-full bg-white/10 text-gray-300 ${link.color} transition-all duration-300 hover:bg-white/20 hover:shadow-lg`}
+                          aria-label={link.label}
+                          className={`inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-gray-300 ${link.color} transition-all duration-300 hover:bg-white/20 hover:shadow-lg`}
                         >
                           <Icon size={24} />
                         </motion.a>

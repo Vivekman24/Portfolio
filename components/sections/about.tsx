@@ -11,25 +11,25 @@ const About = () => {
       icon: Code2,
       title: 'Full-Stack Development',
       description: 'Expert in React, TypeScript, Node.js, FastAPI, and modern web technologies',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Brain,
       title: 'AI & Machine Learning',
       description: 'Specialized in TensorFlow, PyTorch, Keras, Scikit-learn, and building intelligent applications',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Rocket,
       title: 'Cloud & DevOps',
       description: 'Experience with AWS, Docker, Kubernetes, and CI/CD pipelines for scalable deployments',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Users,
       title: 'Data Science',
       description: 'Strong background in statistical analysis, data visualization, and machine learning principles',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-blue-500 to-blue-500'
     }
   ];
 
@@ -43,8 +43,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="studio-section relative px-6 pt-14 pb-14 md:pt-16 md:pb-16">
+      <div className="studio-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,10 +52,11 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">01 / THE PERSON BEHIND THE CODE</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">About Me</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
           I&apos;m a passionate developer and AI enthusiast with a B.S. in Computer Science and Data Science from Rutgers University, currently pursuing my M.S. in Computer Science with a concentration in AI/ML. My work blends software engineering and AI to build practical solutions that improve how people interact with software.
           </p>
         </motion.div>
@@ -110,10 +111,10 @@ const About = () => {
                   viewport={{ once: true }}
                   className="relative group h-full"
                 >
-                  <TiltCard tiltStrength={12} glareEnable={true}>
-                    <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10">
+                  <TiltCard tiltStrength={3} glareEnable={true}>
+                    <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-blue-500/30 group-hover:shadow-lg group-hover:shadow-blue-500/10">
                       <CardContent className="p-6 text-center">
-                        <div className={`inline-flex p-3 rounded-full bg-gradient-to-r ${skill.color} mx-auto mb-4`}>
+                        <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${skill.color} mx-auto mb-4`}>
                           <Icon size={24} className="text-white" />
                         </div>
                         <h4 className="text-lg font-semibold text-white mb-2">{skill.title}</h4>
@@ -151,10 +152,10 @@ const About = () => {
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="group"
               >
-                  <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-cyan-500/50 group-hover:shadow-lg group-hover:shadow-cyan-500/20">
+                  <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-blue-500/50 group-hover:shadow-lg group-hover:shadow-blue-500/20">
                     <CardContent className="p-4 text-center">
-                      <div className="inline-flex p-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mx-auto mb-2 group-hover:from-cyan-500/40 group-hover:to-blue-500/40 transition-all duration-300">
-                        <Icon size={20} className="text-cyan-400 group-hover:text-cyan-300" />
+                      <div className="inline-flex p-2 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-500/20 mx-auto mb-2 group-hover:from-blue-500/40 group-hover:to-blue-500/40 transition-all duration-300">
+                        <Icon size={20} className="text-blue-400 group-hover:text-blue-300" />
                       </div>
                       <h4 className="text-sm font-semibold text-white mb-1">{skill.title}</h4>
                       <p className="text-xs text-gray-400 leading-relaxed">{skill.description}</p>

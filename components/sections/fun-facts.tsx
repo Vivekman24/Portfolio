@@ -11,42 +11,42 @@ const FunFacts = () => {
       emoji: '☕',
       title: 'Coffee Enthusiast',
       description: 'Fueled by caffeine and curiosity',
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-amber-500 to-blue-500'
     },
     {
       icon: Dumbbell,
       emoji: '🏋️',
       title: 'Fitness Focused',
       description: 'Gym sessions keep me sharp',
-      color: 'from-red-500 to-pink-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Gamepad2,
       emoji: '🎮',
       title: 'Gamer',
       description: 'Relaxing with video games',
-      color: 'from-purple-500 to-indigo-500'
+      color: 'from-blue-500 to-indigo-500'
     },
     {
       icon: BookOpen,
       emoji: '📚',
       title: 'AI Research Reader',
       description: 'Always exploring new papers',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Rocket,
       emoji: '🏀',
       title: 'Basketball Player',
       description: 'Love hitting the court',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-blue-500 to-blue-500'
     },
     {
       icon: Code2,
       emoji: '💡',
       title: 'Side Project Addict',
       description: 'Always building something new',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-blue-500 to-blue-500'
     }
   ];
 
@@ -71,8 +71,8 @@ const FunFacts = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section className="studio-section relative px-6 py-16 md:py-20">
+      <div className="studio-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,10 +80,11 @@ const FunFacts = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">06 / OUTSIDE THE EDITOR</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">Beyond The Code</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
             When I&apos;m not coding, here&apos;s what keeps me going!
           </p>
         </motion.div>
@@ -108,7 +109,7 @@ const FunFacts = () => {
                 }}
                 className="group cursor-default"
               >
-                <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-cyan-500/50 group-hover:shadow-xl group-hover:shadow-cyan-500/20 overflow-hidden">
+                <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-blue-500/50 group-hover:shadow-xl group-hover:shadow-blue-500/20 overflow-hidden">
                   <CardContent className="p-4 text-center relative">
                     {/* Animated background gradient on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${fact.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
@@ -122,7 +123,7 @@ const FunFacts = () => {
                       {fact.emoji}
                     </motion.div>
                     
-                    <h4 className="text-sm font-semibold text-white mb-1 group-hover:text-cyan-300 transition-colors">
+                    <h4 className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">
                       {fact.title}
                     </h4>
                     <p className="text-xs text-gray-400 leading-relaxed">
@@ -144,9 +145,9 @@ const FunFacts = () => {
           className="text-center mt-12"
         >
           <p className="text-gray-400 text-sm flex items-center justify-center gap-2">
-            <Heart size={14} className="text-red-400" />
+            <Heart size={14} className="text-blue-400" />
             <span>Work hard, play hard - that&apos;s my motto!</span>
-            <Heart size={14} className="text-red-400" />
+            <Heart size={14} className="text-blue-400" />
           </p>
         </motion.div>
       </div>

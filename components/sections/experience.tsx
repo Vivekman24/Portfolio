@@ -1,10 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import TiltCard from '@/components/tilt-card';
 
 const Experience = () => {
   const experiences = [
@@ -58,87 +55,67 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+    <section id="experience" className="studio-section relative px-6 py-16 md:py-20">
+      <div className="studio-container">
+        <div
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">02 / PROFESSIONAL JOURNEY</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
             My professional journey across various companies, showcasing my growth in software development and AI integration.
           </p>
-        </motion.div>
+        </div>
 
         {/* Timeline Container */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500 hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-400/60 via-blue-500/25 to-transparent hidden md:block" />
           
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <motion.div
+            <div
               key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15 }}
-              viewport={{ once: true }}
                 className="relative"
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-6 top-8 w-5 h-5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 border-4 border-slate-900 z-10 hidden md:flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <div className="absolute left-6 top-8 w-5 h-5 rounded-xl bg-gradient-to-r from-blue-500 to-blue-500 border-4 border-slate-900 z-10 hidden md:flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-blue-200" />
                 </div>
                 
                 {/* Card with left margin for timeline */}
                 <div className="md:ml-16">
-                  <TiltCard tiltStrength={5} glareEnable={true}>
-                  <Card className="glass dark:glass-dark border-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
-                <CardHeader>
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-3">
-                            <div className="p-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20">
-                              <Briefcase className="text-cyan-400" size={20} />
-                            </div>
-                        <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      </div>
-                          <h4 className="text-lg font-semibold text-cyan-400">{exp.company}</h4>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0">
-                        <div className="flex items-center space-x-2 text-gray-400">
-                          <MapPin size={16} />
-                          <span className="text-sm">{exp.location}</span>
-                        </div>
-                        <div className="flex items-center space-x-2 text-gray-400">
-                          <Calendar size={16} />
-                          <span className="text-sm">{exp.period}</span>
-                        </div>
+                  <Card className="studio-experience-card">
+                <CardHeader className="p-6 md:p-8 pb-5">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+                    <div className="flex items-start gap-4 min-w-0">
+                      <span className="studio-skill-icon shrink-0"><Briefcase size={22} strokeWidth={1.5} /></span>
+                      <div className="min-w-0">
+                        <h3 className="text-2xl md:text-3xl text-white leading-tight">{exp.company}</h3>
+                        <h4 className="mt-2 text-base font-medium text-blue-300">{exp.title}</h4>
                       </div>
                     </div>
-                        <Badge variant="secondary" className="w-fit">
-                      {exp.period}
-                    </Badge>
+                    <div className="flex flex-col gap-2 text-sm text-slate-400 lg:items-end shrink-0">
+                      <span className="flex items-center gap-2"><Calendar size={15} />{exp.period}</span>
+                      <span className="flex items-center gap-2"><MapPin size={15} />{exp.location}</span>
+                    </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
+                <CardContent className="px-6 pb-6 md:px-8 md:pb-8">
+                  <ul className="space-y-4 border-t border-white/10 pt-5">
                     {exp.description.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start space-x-3">
-                            <span className="text-cyan-400 mt-1.5 text-sm">▹</span>
+                            <span className="text-blue-400 mt-1.5 text-sm">▹</span>
                         <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
               </Card>
-                  </TiltCard>
                 </div>
-            </motion.div>
+            </div>
           ))}
           </div>
         </div>

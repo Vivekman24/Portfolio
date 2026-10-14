@@ -9,7 +9,7 @@ const ScrollToTop = () => {
   };
 
   return (
-    <div className="py-12 px-4">
+    <div className="py-8 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ const ScrollToTop = () => {
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           whileHover={{ scale: 1.1 }}
-          className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 p-3 rounded-full border border-cyan-500/30 hover:border-cyan-400/50 hover:bg-cyan-500/10"
+          className="text-blue-400 hover:text-blue-300 transition-colors duration-300 p-3 rounded-full border border-blue-500/30 hover:border-blue-400/50 hover:bg-blue-500/10"
         >
           <ChevronUp size={24} />
         </motion.button>

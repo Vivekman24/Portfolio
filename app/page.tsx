@@ -15,31 +15,29 @@ export default function Home() {
     <div className="space-y-0">
       <Hero />
       <SectionDivider variant="wave" />
-      <SmoothScrollSection parallaxStrength={30}>
+      <SmoothScrollSection fadeIn={false}>
         <About />
       </SmoothScrollSection>
       <SectionDivider variant="dots" />
-      <SmoothScrollSection parallaxStrength={40}>
-        <Experience />
-      </SmoothScrollSection>
+      <Experience />
       <SectionDivider variant="wave" flip />
-      <SmoothScrollSection parallaxStrength={35}>
+      <SmoothScrollSection fadeIn={false}>
         <Projects />
       </SmoothScrollSection>
       <SectionDivider variant="dots" />
-      <SmoothScrollSection parallaxStrength={30}>
+      <SmoothScrollSection fadeIn={false}>
         <Resume />
       </SmoothScrollSection>
       <SectionDivider variant="wave" />
-      <SmoothScrollSection parallaxStrength={35}>
+      <SmoothScrollSection fadeIn={false}>
         <Leadership />
       </SmoothScrollSection>
       <SectionDivider variant="dots" />
-      <SmoothScrollSection parallaxStrength={25}>
+      <SmoothScrollSection fadeIn={false}>
         <FunFacts />
       </SmoothScrollSection>
       <SectionDivider variant="wave" flip />
-      <SmoothScrollSection parallaxStrength={30}>
+      <SmoothScrollSection fadeIn={false}>
         <Contact />
       </SmoothScrollSection>
       <ScrollToTop />

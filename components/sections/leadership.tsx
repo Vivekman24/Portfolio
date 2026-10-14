@@ -15,7 +15,7 @@ const Leadership = () => {
       duration: '1 yr 4 mos',
       category: 'Education',
       icon: BookOpen,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-500 to-blue-500',
       description: [
         'Assigned jobs to juniors and led/helped them with their work',
         'Organized 5+ community events and helped with several book sale events',
@@ -30,7 +30,7 @@ const Leadership = () => {
       duration: '2 yrs 4 mos',
       category: 'Arts and Culture',
       icon: Building,
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-blue-500 to-blue-500',
       description: [
         'Helped with the preparation and distribution of food',
         'Assisted junior volunteers set up food donations for priests',
@@ -41,8 +41,8 @@ const Leadership = () => {
   ];
 
   return (
-    <section id="leadership" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="leadership" className="studio-section relative px-6 py-16 md:py-20">
+      <div className="studio-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,14 +50,15 @@ const Leadership = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 mb-6">
-            <Heart size={18} className="text-pink-400" />
-            <span className="text-sm text-purple-300 font-medium">Community Impact</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-500/20 border border-blue-500/30 mb-6">
+            <Heart size={18} className="text-blue-400" />
+            <span className="text-sm text-blue-300 font-medium">Community Impact</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">05 / COMMUNITY & CONTRIBUTION</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">Leadership & Volunteering</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Giving back to the community through leadership roles and volunteer work, 
             developing teamwork and organizational skills beyond the classroom.
           </p>
@@ -77,22 +78,22 @@ const Leadership = () => {
                 whileHover={{ y: -5 }}
                 className="group"
               >
-                <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/10">
+                <Card className="glass dark:glass-dark border-white/10 h-full transition-all duration-300 group-hover:border-blue-500/30 group-hover:shadow-lg group-hover:shadow-blue-500/10">
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${exp.color} shadow-lg`}>
                         <Icon size={24} className="text-white" />
                       </div>
-                      <Badge variant="secondary" className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                      <Badge variant="secondary" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                         {exp.category}
                       </Badge>
                     </div>
                     
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                      <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
                         {exp.title}
                       </h3>
-                      <p className="text-lg font-semibold text-purple-400">{exp.organization}</p>
+                      <p className="text-lg font-semibold text-blue-400">{exp.organization}</p>
                       
                       <div className="flex flex-wrap gap-4 text-sm text-white/70 md:text-gray-400">
                         <div className="flex items-center gap-1">
@@ -122,7 +123,7 @@ const Leadership = () => {
                           viewport={{ once: true }}
                           className="flex items-start space-x-3"
                         >
-                          <span className="text-purple-400 mt-1.5 text-sm">▹</span>
+                          <span className="text-blue-400 mt-1.5 text-sm">▹</span>
                           <span className="text-white/85 md:text-gray-300 text-sm leading-relaxed">{item}</span>
                         </motion.li>
                       ))}
@@ -143,7 +144,7 @@ const Leadership = () => {
           className="mt-16"
         >
           <Card className="glass dark:glass-dark border-white/10 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-purple-500/5" />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-blue-500/5 to-blue-500/5" />
             <CardContent className="relative p-8">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 {[

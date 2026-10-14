@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Award, ExternalLink } from 'lucide-react';
+import { Download, Award, ExternalLink, Code2, Layers, Brain, Wrench, Database } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -64,20 +64,23 @@ const Resume = () => {
     }
   };
 
+  const skillIcons = [Code2, Layers, Brain, Wrench, Database];
+
   return (
-    <section id="resume" className="py-20 px-4 relative bg-slate-900/80 md:bg-transparent">
-      <div className="max-w-6xl mx-auto">
+    <section id="resume" className="studio-section relative px-6 py-16 md:py-20">
+      <div className="studio-container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <p className="studio-eyebrow mb-4">04 / EDUCATION & EXPERTISE</p>
+          <h2 className="studio-heading mb-6">
             <span className="gradient-text">Credentials</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed mb-8">
             My resume, educational background, and technical skills.
           </p>
           
           <MagneticButton strength={0.3}>
             <Button
-              className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-6 py-3"
+              className="bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white px-6 py-3"
               onClick={() => {
                 try {
                   const link = document.createElement('a');
@@ -112,7 +115,7 @@ const Resume = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                     <div>
                       <h4 className="text-xl font-semibold text-white mb-2">{edu.degree}</h4>
-                      <p className="text-purple-400 font-medium">{edu.school}</p>
+                      <p className="text-blue-400 font-medium">{edu.school}</p>
                     </div>
                     <Badge variant="secondary" className="w-fit">{edu.period}</Badge>
                   </div>
@@ -129,7 +132,9 @@ const Resume = () => {
             <span className="gradient-text">Technical Skills</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
-            {Object.entries(skills).map(([category, subcategories], index) => (
+            {Object.entries(skills).map(([category, subcategories], index) => {
+              const Icon = skillIcons[index];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -138,21 +143,21 @@ const Resume = () => {
                 viewport={{ once: true }}
                 className={`h-full ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'} ${index === 4 ? 'md:col-span-2' : ''}`}
               >
-                <TiltCard className="h-full" tiltStrength={8} glareEnable={true}>
-                  <Card className="glass dark:glass-dark border-white/10 h-full flex flex-col hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
-                    <CardHeader>
-                      <h4 className="text-lg font-semibold text-white">{category}</h4>
+                <TiltCard className="h-full" tiltStrength={3} glareEnable={true}>
+                  <Card className="glass dark:glass-dark border-white/10 h-full flex flex-col hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center gap-3"><span className="studio-skill-icon"><Icon size={20} strokeWidth={1.5} /></span><h4 className="text-base font-semibold text-white">{category}</h4></div>
                     </CardHeader>
-                    <CardContent className="space-y-4 flex-1">
+                    <CardContent className="studio-skill-groups flex-1">
                       {Object.entries(subcategories).map(([subCategory, skillList]) => (
                         <div key={subCategory}>
-                          <p className="text-sm text-cyan-400 mb-2 font-medium">{subCategory}</p>
+                          <p className="text-sm text-blue-400 mb-2 font-medium">{subCategory}</p>
                           <div className="flex flex-wrap gap-2">
                             {skillList.map((skill) => (
                               <Badge
                                 key={skill}
                                 variant="secondary"
-                                className="bg-white/10 text-gray-300 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors text-xs cursor-default"
+                                className="studio-skill-tag text-xs cursor-default"
                               >
                                 {skill}
                               </Badge>
@@ -164,7 +169,8 @@ const Resume = () => {
                   </Card>
                 </TiltCard>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -183,9 +189,9 @@ const Resume = () => {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
               >
-                <Card className="glass dark:glass-dark border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
+                <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
                   <CardContent className="p-6 text-center">
-                    <div className="inline-flex p-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mb-4">
+                    <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-500 mx-auto mb-4">
                       <Award size={28} className="text-white" />
                     </div>
                     <h4 className="text-lg font-semibold text-white mb-2">{cert.title}</h4>
@@ -193,7 +199,7 @@ const Resume = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20"
+                      className="border-blue-500/50 text-blue-400 hover:bg-blue-500/20"
                       onClick={() => window.open(cert.file, '_blank')}
                     >
                       <ExternalLink size={14} className="mr-2" />
