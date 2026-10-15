@@ -1,15 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { personal } from '@/lib/portfolio-data';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import TiltCard from '@/components/tilt-card';
-import MagneticButton from '@/components/magnetic-button';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +35,7 @@ const Contact = () => {
           subject: formData.subject,
           message: formData.message,
           from_name: 'Portfolio Contact Form',
-          to_email: 'manthrivivek@gmail.com',
+          to_email: personal.email,
         }),
       });
 
@@ -76,19 +73,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'manthrivivek@gmail.com',
-      href: 'mailto:manthrivivek@gmail.com'
+      value: personal.email,
+      href: 'mailto:' + personal.email
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (248) 759-7187',
+      value: personal.phone,
       href: 'tel:+12487597187'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'South Brunswick, NJ',
+      value: personal.location,
       href: '#'
     }
   ];
@@ -97,220 +94,22 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/Vivekman24',
+      href: personal.github,
       color: 'hover:text-gray-400'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/vivek-sai-manthri',
+      href: personal.linkedin,
       color: 'hover:text-blue-400'
     }
   ];
 
   return (
-    <section id="contact" className="studio-section relative px-6 py-16 md:py-20">
-      <div className="studio-container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="studio-eyebrow mb-4">07 / START A CONVERSATION</p>
-          <h2 className="studio-heading mb-6">
-            <span className="gradient-text">Get In Touch</span>
-          </h2>
-          <p className="text-base text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            Ready to bring your ideas to life? Let&apos;s discuss your next project or collaboration. 
-            I&apos;m always excited to work on innovative solutions!
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
-              <CardHeader>
-                <h3 className="text-2xl font-bold text-white">Send Message</h3>
-                <p className="text-gray-400">
-                  Fill out the form below and I&apos;ll get back to you as soon as possible.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <Input
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Input
-                      name="subject"
-                      placeholder="Subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Textarea
-                      name="message"
-                      placeholder="Your Message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 resize-none"
-                    />
-                  </div>
-                  
-                  <MagneticButton strength={0.15} className="w-full">
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 text-white py-3"
-                    >
-                      {isSubmitting ? (
-                        <div className="flex items-center space-x-2">
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                          <span>Sending...</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center space-x-2">
-                          <Send size={20} />
-                          <span>Send Message</span>
-                        </div>
-                      )}
-                    </Button>
-                  </MagneticButton>
-                </form>
-              </CardContent>
-            </Card>
-            </TiltCard>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            {/* Contact Details */}
-            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
-              <CardHeader>
-                <h3 className="text-2xl font-bold text-white">Contact Information</h3>
-                <p className="text-gray-400">
-                  Prefer direct contact? Here are my details.
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const Icon = info.icon;
-                  return (
-                    <motion.div
-                      key={info.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-center space-x-4"
-                    >
-                      <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-500">
-                        <Icon size={20} className="text-white" />
-                      </div>
-                      <div>
-                        <p className="text-gray-400 text-sm">{info.label}</p>
-                        {info.href === '#' ? (
-                          <p className="text-white font-medium">{info.value}</p>
-                        ) : (
-                          <a
-                            href={info.href}
-                            className="text-white font-medium hover:text-blue-400 transition-colors"
-                          >
-                            {info.value}
-                          </a>
-                        )}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </CardContent>
-            </Card>
-            </TiltCard>
-
-            {/* Social Links */}
-            <TiltCard className="!h-auto [&>*]:!h-auto" tiltStrength={3} glareEnable={true}>
-            <Card className="glass dark:glass-dark border-white/10 hover:border-blue-500/30 transition-all duration-300">
-              <CardHeader>
-                <h3 className="text-xl font-bold text-white">Connect With Me</h3>
-                <p className="text-gray-400">
-                  Follow my work and connect on social platforms.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="flex space-x-4">
-                  {socialLinks.map((link, index) => {
-                    const Icon = link.icon;
-                    return (
-                      <MagneticButton key={link.label} strength={0.4}>
-                        <motion.a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.1 }}
-                          aria-label={link.label}
-                          className={`inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-gray-300 ${link.color} transition-all duration-300 hover:bg-white/20 hover:shadow-lg`}
-                        >
-                          <Icon size={24} />
-                        </motion.a>
-                      </MagneticButton>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-            </TiltCard>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+    <section id="contact" className="concept-section concept-contact px-6"><div className="studio-container grid gap-12 lg:grid-cols-2 items-start">
+      <div className="contact-finale"><p className="studio-eyebrow mb-6">07 / CONTACT</p><h2 className="studio-heading">Let’s build<br />something<br /><span className="studio-accent">meaningful.</span></h2><p className="mt-6 max-w-md text-base leading-relaxed text-slate-400">Ready to bring your ideas to life? Let&apos;s discuss your next project or collaboration. I&apos;m always excited to work on innovative solutions!</p><div className="concept-contact-actions"><a href={'mailto:' + personal.email}><Mail size={18}/>Email</a>{socialLinks.map(link=>{const Icon=link.icon;return <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer"><Icon size={18}/>{link.label}</a>;})}</div><div className="concept-contact-details">{contactInfo.map(info=>{const Icon=info.icon;return <div key={info.label}><Icon size={16}/>{info.href==='#'?<span>{info.value}</span>:<a href={info.href}>{info.value}</a>}</div>;})}</div></div>
+      <form onSubmit={handleSubmit} className="concept-panel concept-contact-form"><p className="studio-eyebrow mb-4">FROM AN IDEA TO A CONVERSATION</p><h3 className="text-xl text-white mb-2">Send a message</h3><p className="text-sm text-slate-400 mb-7">Fill out the form below and I&apos;ll get back to you as soon as possible.</p><div className="space-y-5">{[{name:'name',label:'Name',placeholder:'Your name',type:'text'},{name:'email',label:'Email',placeholder:'you@example.com',type:'email'},{name:'subject',label:'Subject',placeholder:'How can we connect?',type:'text'}].map(field=><div key={field.name}><label htmlFor={`contact-${field.name}`}>{field.label}</label><Input id={`contact-${field.name}`} name={field.name} type={field.type} placeholder={field.placeholder} value={formData[field.name as keyof typeof formData]} onChange={handleChange} required/></div>)}<div><label htmlFor="contact-message">Message</label><Textarea id="contact-message" name="message" placeholder="Your message…" value={formData.message} onChange={handleChange} required rows={6}/></div><Button type="submit" disabled={isSubmitting} className="concept-send-button w-full">{isSubmitting?'Sending…':'Send message'}<Send size={17} className="ml-2"/></Button></div></form>
+    </div></section>
   );
 };
-
 export default Contact;

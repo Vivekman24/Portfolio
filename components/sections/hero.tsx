@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import LightRibbon from '@/components/light-ribbon';
 import { ArrowDown, ArrowUpRight, Brain, Code, FileText, Github, Linkedin, Layers } from 'lucide-react';
 
 const stages = [
@@ -30,15 +31,15 @@ export default function Hero() {
               <a href="#contact" className="studio-social">Let’s connect <ArrowUpRight size={16} /></a>
             </div>
           </div>
-          <div className="studio-workflow">
+          <div className="studio-workflow soft-profile">
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <span className="studio-eyebrow">A LITTLE ABOUT ME</span><span className="text-xs text-slate-500">01 — 03</span>
             </div>
-            <div className="studio-orbit" aria-hidden="true"><div className="studio-orbit-ring" /><div className="studio-orbit-ring studio-orbit-ring-inner" /><div className="studio-orbit-core"><span className="text-4xl font-medium tracking-tighter">VM</span></div><span className="studio-orbit-label">CURIOUS BY NATURE. DRIVEN TO BUILD.</span></div>
+            <LightRibbon variant={active} />
             <div className="grid grid-cols-3 gap-2" aria-label="Explore my interests">
               {stages.map((stage, index) => { const Icon = stage.icon; return <button key={stage.title} type="button" aria-label={stage.title} aria-pressed={active === index} onClick={() => setActive(index)} className={`studio-stage ${active === index ? 'studio-stage-active' : ''}`}><Icon size={20} /><span className="mt-3 text-[10px] leading-relaxed">{stage.title}</span></button>; })}
             </div>
-            <div className="min-h-[112px] pt-6" aria-live="polite"><h2 className="text-lg text-stone-100">{stages[active].title}</h2><p className="mt-2 text-sm leading-relaxed text-slate-400">{stages[active].detail}</p></div>
+            <div key={active} className="min-h-[112px] pt-6 visual-swap" aria-live="polite"><h2 className="text-lg text-stone-100">{stages[active].title}</h2><p className="mt-2 text-sm leading-relaxed text-slate-400">{stages[active].detail}</p></div>
             <p className="border-t border-white/10 pt-4 text-[11px] text-slate-500">Select an interest to get to know me</p>
           </div>
         </div>

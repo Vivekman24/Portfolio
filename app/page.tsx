@@ -9,10 +9,12 @@ import Contact from '@/components/sections/contact';
 import SectionDivider from '@/components/section-divider';
 import SmoothScrollSection from '@/components/smooth-scroll-section';
 import ScrollToTop from '@/components/scroll-to-top';
+import ScrollReveals from '@/components/scroll-reveals';
 
 export default function Home() {
   return (
     <div className="space-y-0">
+      <ScrollReveals />
       <Hero />
       <SectionDivider variant="wave" />
       <SmoothScrollSection fadeIn={false}>

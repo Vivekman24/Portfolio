@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Menu, X, Home, User, Briefcase, FileText, Mail, Folder, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
+  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mounted, setMounted] = useState(false);
@@ -66,7 +67,7 @@ const Navigation = () => {
     <>
       {/* Desktop Navigation */}
       <motion.nav
-        initial={{ y: -100 }}
+        initial={reduceMotion ? false : { y: -100 }}
         animate={{ y: 0 }}
         className="sticky top-0 left-0 right-0 z-50 studio-navigation border-b border-white/10"
       >
@@ -75,7 +76,7 @@ const Navigation = () => {
             {/* Logo - Left */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-xl font-bold gradient-text"
+              className="text-2xl font-medium tracking-tighter text-blue-200"
             >
               VSM
             </motion.div>
@@ -89,14 +90,16 @@ const Navigation = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-all duration-300 ${
+                    aria-current={activeSection === item.id ? 'location' : undefined}
+                    className={`relative flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors duration-300 ${
                       activeSection === item.id
-                        ? 'bg-blue-500/15 text-blue-200'
+                        ? 'bg-transparent text-blue-200'
                         : 'text-slate-400 hover:text-blue-200 hover:bg-blue-500/10'
                     }`}
                   >
-                    <Icon size={16} />
+                    <Icon size={16} className="hidden" />
                     <span>{item.label}</span>
+                    {activeSection === item.id && <motion.span className="navigation-indicator" layoutId="navigation-indicator" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 34 }} />}
                   </button>
                 );
               })}
